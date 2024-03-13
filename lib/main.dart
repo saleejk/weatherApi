@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/additional_information.dart';
 import 'package:flutter_application_1/apis.dart';
+import 'package:flutter_application_1/current_weather.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Wheather App',
       theme: ThemeData(),
       home: Home(),
     );
@@ -25,12 +27,35 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-            onPressed: () {
-              getNumberFact(number: 90);
-            },
-            child: Text('Get Result')),
+      backgroundColor: Colors.green,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Text(
+          'wheatherApp',
+          style: TextStyle(color: Colors.black),
+        ),
+        centerTitle: true,
+        leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          currentWeather(Icons.wb_sunny_rounded, '26.3', 'Georgia'),
+          SizedBox(
+            height: 60,
+          ),
+          Text(
+            'Additional Information',
+            style: TextStyle(
+                fontSize: 24.0,
+                color: Colors.green,
+                fontWeight: FontWeight.bold),
+          ),
+          Divider(),
+          SizedBox(
+            height: 20.0,
+          ),additionalInformation('24', '2', '1014', '24.6'),
+        ],
       ),
     );
   }
